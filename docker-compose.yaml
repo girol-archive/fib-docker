@@ -8,8 +8,10 @@ services:
     image: 'redis:latest'
 
   server:
-    build: Dockerfile.dev
-    context: ./server
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+
     volumes:
       - /app/node_modules # will leave this untouched
       - ./server:/app     # will keep changes between developer machine and container
