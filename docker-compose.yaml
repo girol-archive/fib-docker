@@ -18,6 +18,7 @@ services:
 
   api:
     build:
+      dockerfile: Dockerfile.dev
       context: ./server
 
     volumes:
