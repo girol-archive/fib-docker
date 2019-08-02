@@ -15,3 +15,9 @@ after_success:
   - docker build -t girol/fib-server ./server
   - docker build -t girol/fib-nginx ./nginx
   - docker build -t girol/fib-worker ./worker
+  # Logs in Docker hub
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push girol/fib-client
+  - docker push girol/fib-server
+  - docker push girol/fib-nginx
+  - docker push girol/fib-worker
