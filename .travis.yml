@@ -1,0 +1,17 @@
+language: generic
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t girol/fib-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true girol/fib-test npm test
+
+after_success:
+  - docker build -t girol/fib-client ./client
+  - docker build -t girol/fib-server ./server
+  - docker build -t girol/fib-nginx ./nginx
+  - docker build -t girol/fib-worker ./worker
