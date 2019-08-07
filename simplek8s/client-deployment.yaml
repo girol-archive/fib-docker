@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment # this value is arbitrary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web # this key:value pair is arbitrary
+
+# The container or containers that we want to run in the deployment
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+      - name: client
+        image: girol/fib-client
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
