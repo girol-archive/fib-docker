@@ -3,10 +3,10 @@ kind: Deployment
 metadata:
   name: client-deployment # this value is arbitrary
 spec:
-  replicas: 1
-  selector:
+  replicas: 1             # how many IDENTICAL pods we will create?
+  selector:               # which pods the deployment will handle
     matchLabels:
-      component: web # this key:value pair is arbitrary
+      component: web       # this key:value pair is arbitrary
 
 # The container or containers that we want to run in the deployment
   template:
